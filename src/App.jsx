@@ -1,7 +1,7 @@
 // src/App.jsx
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import logoBrazilCashback from './assets/BC-Verde.png';
+import logoBrazilCashback from './assets/BC-verde.png';
 import Sobre from './pages/como-funciona';
 import Cadastro from './pages/cadastro';
 import ParaEmpresas from './pages/para_empresas';

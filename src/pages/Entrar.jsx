@@ -1,6 +1,6 @@
 // Entrar.jsx
 import React from 'react';
-import logoBrazilCashback from '../assets/BC-Verde.png';
+import logoBrazilCashback from '../assets/BC-verde.png';
 import Financeiro from '/public/Finance.svg';
 
 function Login() {
