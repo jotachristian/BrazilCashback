@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Footer from '../components/Footer';
 import ScrollReveal from 'scrollreveal';
 import Carousel from '../components/SponsorCarousel';
-import Gestao from '/public/icon-gestao.gif';
+import Gestao from '../assets/icon-gestao.gif';
 import Madecode from '../assets/madecode.png'
 import Ganheclicando from '../assets/winClick.svg';
 import Descontoloja from '../assets/discountLoja.svg';
@@ -98,8 +98,6 @@ function Home() {
     </div>
   </div>
 </section>
-
-
 
       {/* Seção de benefícios */}
       <div className="reveal mt-20">

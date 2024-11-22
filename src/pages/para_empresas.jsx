@@ -6,21 +6,22 @@ import Madecode from '../assets/madecode.png'
 import Ganheclicando from '../assets/winClick.svg';
 import Descontoloja from '../assets/discountLoja.svg';
 import Cashbacksust from '../assets/cashback.svg';
-import Convidaramigo from '../assets/inviteFriend.svg';
 import logoBrazilCashbackW from '../assets/bc-logo-white.png';
-import cashbackSimples from '../assets/sacola.svg';
-import recebaCashback from '../assets/receberCash.svg';
-import useSeuCashback from '../assets/wallet.svg';
-import AppStore from '../assets/app-store-app.png';
-import GooglePlay from '../assets/google-play-store-app.png';
-import FacebookLogo from '../assets/Facebook_Logo_Secondary.png';
-import WhatsappLogo from '../assets/Digital_Glyph_White.png';
-import InstagramLogo from '../assets/Instagram_Glyph_White.png';
-import YoutubeLogo from '../assets/youtube-app-white-icon.png';
+import CashbackChart from '../components/CashbackChart';
+import Carousel from '../components/SponsorCarousel';
+import Footer from '../components/Footer';
+
+
 
 function para_empresas() {
   const [showBackButton, setShowBackButton] = useState(false);
   const couponsRef = useRef(null);
+  const [isAnnual, setIsAnnual] = useState(false);
+  const prices = {
+    lite: isAnnual ? 'R$1.260,00' : 'R$116,90',
+    standard: isAnnual ? 'R$1.918,90' : 'R$161,90',
+    plus: isAnnual ? 'R$2.698,80' : 'R$224,90',
+  };
 
   const scrollLeft = () => {
     if (couponsRef.current) {
@@ -62,17 +63,17 @@ function para_empresas() {
       <div className="flex flex-col md:flex-row items-center justify-between min-h-screen p-7 reveal md:bg-gradient-teste2">
         <div className="md:w-1/2 w-full text-center md:text-left justify-center p-6 mx-auto md:mx-32 reveal-left">
           <h1 className="text-2xl md:text-4xl font-bold text-center md:text-left mb-6 mt-32 md:mt-20">
-            Gerencie o Cashback para seus clientes
+            Transforme clientes em fãs: Fidelize e aumente suas vendas com o Brazil Cashback.
           </h1>
           <p className="text-base leading-relaxed">
-            Comece a bonificar seus compradores com um percentual financeiro e consiga mais vendas no seus pequenos e grandes negócios
+            Ofereça cashback aos seus clientes e veja suas vendas crescerem. Uma solução simples, eficiente e personalizada para o seu negócio.
           </p>
           <div className="flex gap-3 mt-4">
             <a href="/testeagora">
-              <button className="bg-[#ffcc00] text-white py-2 px-1 md:px-2 rounded-lg">CADASTRAR</button>
+              <button className="bg-[#ffcc00] text-white py-1 px-4 md:px-2 rounded-lg">CADASTRE SUA EMPRESA</button>
             </a>
             <a href="/contato">
-              <button className="border-2 border-[#ffcc00] text-[#ffcc00] py-2 px-1 md:px-2 rounded-lg bg-transparent">NOSSOS PLANOS</button>
+              <button className="border-2 border-[#ffcc00] text-[#ffcc00] py-1 px-4 md:px-2 rounded-lg bg-transparent">AGENDE UMA DEMONSTRAÇÃO</button>
             </a>
           </div>
         </div>
@@ -82,256 +83,275 @@ function para_empresas() {
       </div>
 
 
-      {/* Sessão com o Vídeo sobre o Brazil Cashback */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
-          {/* Coluna do Vídeo */}
-          <div className="w-full md:w-1/2 lg:w-5/12">
-            <iframe
-              width="100%"
-              height="315"
-              src="https://www.youtube.com/embed/ENxwrvMD5VI?si=sl626no-vFODhXAd"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="rounded-lg shadow-lg"
-            ></iframe>
-          </div>
-
-          {/* Coluna de Texto */}
-          <div className="w-full md:w-1/2 lg:w-7/12 p-12">
-            <h2 className="text-4xl font-bold text-[#ffcc00] mb-6">Entenda como o Cashback funciona</h2>
-            <p className="text-gray-800 text-base leading-relaxed">
-              Imagine ganhar dinheiro de volta toda vez que faz uma compra. Com o Brazil Cashback, você transforma suas compras do dia a dia em oportunidades de economizar e receber recompensas incríveis. É simples: quanto mais você usa, mais você recebe. Confira no vídeo como aproveitar ao máximo essa vantagem!
-            </p>
-          </div>
-        </div>
-      </section>
-
-
       {/* Seção de benefícios */}
       <div className="reveal">
-        <h2 className="text-2xl text-center p-28 font-bold text-[#ffcc00]">Porque um sistema de Cashback ajuda sua empresa?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 p-20 reveal">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-10 p-32 reveal">
           <div className="flex flex-col items-start reveal-left">
             <img src={Ganheclicando} alt="Exame escaneado no Tablet" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#ffcc00]">Fácil de usar</h4>
-            <p>Cadastre-se, escolha sua loja favorita e receba cashback com poucos cliques. Sem mistério, só economia!</p>
+            <h4 className="font-bold mb-2">Cadastre-se</h4>
+            <p>Crie sua conta em menos de 5 minutos.</p>
           </div>
           <div className="flex flex-col items-start reveal">
             <img src={Descontoloja} alt="Enfileiramento de itens" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#ffcc00]">Descontos Exclusivos</h4>
-            <p>Aproveite ofertas em marcas populares, de moda a eletrônicos, e economize mais com cashback especial!</p>
+            <h4 className="font-bold mb-2">Configure o Cashback</h4>
+            <p>Escolha a porcentagem e comece a recompensar seus clientes.</p>
           </div>
           <div className="flex flex-col items-start reveal">
             <img src={Cashbacksust} alt="Relógio" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#ffcc00]">Dinheiro de Volta Rápido e Seguro</h4>
-            <p>Acumule cashback e retire seus ganhos de forma fácil e segura.</p>
-          </div>
-          <div className="flex flex-col items-start reveal-right">
-            <img src={Convidaramigo} alt="Agenda" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#ffcc00]">Ganhe Indicações e Potencialize o Cashback</h4>
-            <p>Convide amigos e receba bônus em suas economias! Quanto mais amigos, maior seu saldo.</p>
+            <h4 className="font-bold mb-2">Fidelize Clientes</h4>
+            <p>Veja seus clientes voltando para gastar mais.</p>
           </div>
         </div>
       </div>
 
-      {/* Sessão de Cupons */}
-      <section className="bg-[#FFEB3B] py-10">
-        <h2 className="text-2xl text-center font-bold text-black">Economize com Cupons</h2>
-        <div className="relative">
-          {showBackButton && (
-            <button
-              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-[#008000] text-white p-3 rounded-full shadow-md hover:bg-[#33a133] text-2xl"
-              onClick={scrollLeft}
-            >
-              &#8249;
-            </button>
-          )}
+      {/* Sessão dos Valores da empresa */}
+      <h1 className='text-3xl text-center mb-8'>Benefícios para empresas</h1>
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 md:p-16 m-0 md:m-12 w-full items-center justify-center">
 
-          <div
-            id="cupons-container"
-            ref={couponsRef}
-            className="flex overflow-x-none space-x-6 p-6"
-          >
-            {[
-              { logo: "Logo", empresa: "Madecode Brazil", desconto: "10% OFF", descricao: "Primeira Compra usando o Brazil Cashback" },
-              { logo: "Logo", empresa: "Qr Cook", desconto: "15% OFF", descricao: "Aproveite o desconto em produtos selecionados" },
-              { logo: "Logo", empresa: "Empresa 3", desconto: "20% OFF", descricao: "Desconto exclusivo em compras acima de R$100" },
-              { logo: "Logo", empresa: "Empresa 4", desconto: "25% OFF", descricao: "Desconto especial para novas compras" },
-              { logo: "Logo", empresa: "Empresa 5", desconto: "30% OFF", descricao: "Desconto em categorias selecionadas" },
-              { logo: "Logo", empresa: "Empresa 6", desconto: "5% OFF", descricao: "Desconto em compras acima de R$50" },
-              { logo: "Logo", empresa: "Empresa 7", desconto: "50% OFF", descricao: "Desconto para compras de fim de ano" },
-              { logo: "Logo", empresa: "Empresa 8", desconto: "15% OFF", descricao: "Desconto especial para clientes fidelidade" },
-            ].map((cupom, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-start bg-white border-2 border-gray-400 rounded-lg p-6 shadow-md min-w-[250px]"
-              >
-                <img src={Madecode} alt={`${cupom.empresa} Logo`} className="h-16 mb-4" />
-                <h3 className="text-sm font-semibold text-gray-800">{cupom.empresa}</h3>
-                <h4 className="text-xl font-bold text-[#ffcc00] my-2">{cupom.desconto}</h4>
-                <p className="text-gray-700 text-sm">{cupom.descricao}</p>
-                <button className="mt-4 bg-transparent text-[#008000] border-[#008000] py-2 px-4 rounded-md">Pegar Cupom</button>
-              </div>
-            ))}
+        {/* Primeira Grid de Benefícios */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+
+          {/* Primeira Caixa */}
+          <div className="flex flex-col items-center text-center bg-gray-100 rounded-lg p-6 shadow-md">
+            <h2 className="text-2xl font-bold mb-4">Fidelização de Clientes</h2>
+            <p>Clientes que voltam mais vezes gastam até 50% a mais.</p>
           </div>
 
-          <button
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#008000] text-white p-3 rounded-full shadow-md hover:bg-[#33a133] text-2xl"
-            onClick={scrollRight}
-          >
-            &#8250;
-          </button>
+          {/* Segunda Caixa */}
+          <div className="flex flex-col items-center text-center bg-gray-100 rounded-lg p-6 shadow-md">
+            <h2 className="text-2xl font-bold mb-4">Aumento do Ticket Médio</h2>
+            <p>Incentive compras maiores com cashback progressivo.</p>
+          </div>
+
+          {/* Terceira Caixa */}
+          <div className="flex flex-col items-center text-center bg-yellow-400 rounded-lg p-6 shadow-md">
+            <h2 className="text-2xl font-bold mb-4">Relatórios Personalizados</h2>
+            <p>Entenda seus clientes com relatórios detalhados.</p>
+          </div>
+
+          {/* Quarta Caixa */}
+          <div className="flex flex-col items-center text-center bg-gray-100 rounded-lg p-6 shadow-md">
+            <h2 className="text-2xl font-bold mb-4">Configuração Fácil</h2>
+            <p>Pronto para uso em poucos minutos.</p>
+          </div>
+
+        </div>
+
+        {/* Imagem (Ocupa toda a largura na linha inferior em telas pequenas) */}
+        <div className="rounded-lg shadow-md h-[300px] md:h-[440px] flex items-center justify-center w-full p-4">
+          <CashbackChart />
+
+        </div>
+        <p className='text-gray-400'>**Nossos parceiros aumentaram suas vendas em 30% em apenas 2 meses usando o Brazil Cashback</p>
+      </section>
+
+      {/* Sessão de Planos */}
+      {/* Sessão de Planos */}
+      <section className="flex flex-col items-center justify-center min-h-screen p-10">
+        <div className="w-full max-w-7xl">
+          <h2 className="text-3xl text-center mb-8">Planos e Preços</h2>
+
+          {/* Alternância Mensal/Anual */}
+          <div className="flex justify-center items-center mb-8">
+            <span
+              className={`mr-4 font-semibold ${!isAnnual ? 'text-black' : 'text-gray-500'
+                }`}
+            >
+              Mensal
+            </span>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className="sr-only peer"
+                onChange={() => setIsAnnual(!isAnnual)} // Alterna estado
+              />
+              <div className="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-yellow-400"></div>
+              <div className="absolute w-4 h-4 bg-white rounded-full transition-transform transform peer-checked:translate-x-5"></div>
+            </label>
+            <span
+              className={`ml-4 font-semibold ${isAnnual ? 'text-black' : 'text-gray-500'
+                }`}
+            >
+              Anual
+            </span>
+          </div>
+
+          {/* Cards de Preços */}
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Plano Lite */}
+            <div className="bg-white border rounded-lg shadow-md p-6 flex flex-col flex-1">
+              <h3 className="text-xl font-semibold mb-4">Lite</h3>
+              <p className="text-gray-600 mb-4">Para pequenos negócios</p>
+              <p className="text-4xl font-bold mb-6">
+                {prices.lite}
+                <span className="text-xl font-normal text-gray-600">
+                  {isAnnual ? '/ano' : '/mês'}
+                </span>
+              </p>
+              <ul class="mb-6 flex-grow">
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  2.000 clientes
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Cashback fixo configurável.
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Relatórios básicos.
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Suporte via e-mail.
+                </li>
+              </ul>
+              <button className="bg-[#ffcc00] text-white rounded-md py-2 px-4 hover:bg-yellow-500 transition duration-300">
+                Começar agora
+              </button>
+            </div>
+
+            {/* Plano Padrão */}
+            <div className="bg-white border rounded-lg shadow-md p-6 flex flex-col flex-1">
+              <h3 className="text-xl font-semibold mb-4">Padrão</h3>
+              <p className="text-gray-600 mb-4">Para empresas em ascensão</p>
+              <p className="text-4xl font-bold mb-6">
+                {prices.standard}
+                <span className="text-xl font-normal text-gray-600">
+                  {isAnnual ? '/ano' : '/mês'}
+                </span>
+              </p>
+              <ul class="mb-6 flex-grow">
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  +10.000 usuários
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Tudo do Lite
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  suporte dedicado
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  campanhas promocionais
+                </li>
+              </ul>
+              <button className="bg-[#ffcc00] text-white rounded-md py-2 px-4 hover:bg-yellow-500 transition duration-300">
+                Começar agora
+              </button>
+            </div>
+
+            {/* Plano BCB Plus */}
+            <div className="bg-white border rounded-lg shadow-md p-6 flex flex-col flex-1 border-2 border-[#ffcc00]">
+              <h3 className="text-xl font-semibold mb-4">BCB Plus</h3>
+              <p className="text-gray-600 mb-4">Para grandes empresas</p>
+              <p className="text-4xl font-bold mb-6">
+                {prices.plus}
+                <span className="text-xl font-normal text-gray-600">
+                  {isAnnual ? '/ano' : '/mês'}
+                </span>
+              </p>
+              <ul class="mb-6 flex-grow">
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  +60.000 clientes
+                </li><li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Tudo do Básico e Padrão
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  + relatórios detalhados
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  integração avançada
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  Recursos Avançados e Suporte 24h
+                </li>
+              </ul>
+              <button className="bg-[#ffcc00] text-white rounded-md py-2 px-4 hover:bg-yellow-500 transition duration-300">
+                Começar agora
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Seção de depoimentos */}
-      <h2 className="text-2xl text-center my-16 mt-20 font-bold text-[#008000]">Quem usa o Brazil Cashback?</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-20 sm:p-10">
-        {[
-          {
-            name: "Ana Oliveira",
-            review: "Não sei mais comprar sem dar uma espiadinha antes no site do Cashback! Foi amor no primeiro cashback."
-          },
-          {
-            name: "Bruno Santos",
-            review: "O Cashback é fundamental para eu fechar uma compra e com a grana do cashback dá para pagar aquele boleto."
-          },
-          {
-            name: "Carla Lima",
-            review: "Cara eu AMO fazer compras online e usar o Cashback, é tão legal depois você olhar o app e do nada ter uns dinheirinhos na carteira."
-          },
-          {
-            name: "Diego Costa",
-            review: "Amo poder comprar usando os descontos e benefícios que o Cashback me proporciona. Um dia estava sem dinheiro, acessei e tinha um dinheirinho para ser resgatado."
-          },
-        ].map((user, index) => (
-          <div key={index} className="flex flex-col items-start p-6 border rounded-lg shadow-md">
-            {/* Círculo de imagem vazio */}
-            <div className="w-12 h-12 rounded-full border border-[#ffcc00] mb-4 flex-shrink-0"></div>
+      <section>
+        <div className="flex flex-col items-center justify-center bg-transparent py-16">
+          <h2 className="text-3xl mb-8">Depoimentos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl px-4">
+            {/* Depoimento 1 */}
+            <div className="bg-white shadow-lg rounded-lg p-6 border-2 border-[#ffcc00] border-dashed relative min-h-[250px] flex flex-col justify-between">
+              <div className="absolute top-4 -left-4 w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-r-[20px] border-r-white"></div>
+              <p className="text-gray-600 mb-4">
+                "Conheci o Brazil Cashback buscando na internet uma maneira de atrair mais leads para o meu modelo de negócios. Fiquei muito contente em encontrar um sistema que automatize e reduza meu trabalho."
+              </p>
+              <div className="flex items-center mt-4">
+                <img
+                  src="https://via.placeholder.com/40"
+                  alt="Eduardo"
+                  className="w-10 h-10 rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold">Christian</h4>
+                  <p className="text-sm text-gray-500">Equipe Madecode Brazil</p>
+                </div>
+              </div>
+            </div>
 
-            {/* Texto do depoimento */}
-            <p className="italic text-lg mb-4">{`"${user.review}"`}</p>
+            {/* Depoimento 2 */}
+            <div className="bg-white shadow-lg rounded-lg p-6 border-2 border-[#ffcc00] border-dashed relative min-h-[250px] flex flex-col justify-between">
+              <div className="absolute top-4 -left-4 w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-r-[20px] border-r-white"></div>
+              <p className="text-gray-600 mb-4">
+                "Nossa parceria começou em 2018 quando tivemos a ideia de bonificar nossos clientes e precisavamos de uma solução simples que atendesse as necessidades individuais de cada negócio. Em minha opinião Brazil Cashback é um sucesso!"
+              </p>
+              <div className="flex items-center mt-4">
+                <img
+                  src="https://via.placeholder.com/40"
+                  alt="Elson Mota"
+                  className="w-10 h-10 rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold">Marcelo</h4>
+                  <p className="text-sm text-gray-500">Ótica Popular</p>
+                </div>
+              </div>
+            </div>
 
-            {/* Nome do usuário */}
-            <p className="text-[#ffcc00] font-bold">— {user.name}</p>
+            {/* Depoimento 3 */}
+            <div className="bg-white shadow-lg rounded-lg p-6 border-2 border-[#ffcc00] border-dashed relative min-h-[250px] flex flex-col justify-between">
+              <div className="absolute top-4 -left-4 w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-r-[20px] border-r-white"></div>
+              <p className="text-gray-600 mb-4">
+                "Em 2024 nós começamos a usar a plataforma do Brazil Cashback e desde então estamos aumentando nossos cadastros, vendas e cuidando da satisfação dos nossos clientes."
+              </p>
+              <div className="flex items-center mt-4">
+                <img
+                  src="https://via.placeholder.com/40"
+                  alt="Willians"
+                  className="w-10 h-10 rounded-full mr-4"
+                />
+                <div>
+                  <h4 className="font-bold">Jorge</h4>
+                  <p className="text-sm text-gray-500">QR Cook</p>
+                </div>
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-
-      {/* Seção explicativa de como funciona */}
-      <h2 className="text-2xl text-center mt-20 font-bold reveal text-[#008000] p-20">Ganhe cashback de maneira simples</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 p-20 reveal">
-        {[
-          { title: "Compre", description: "Escolha suas lojas e marcas favoritas e finalize sua compra.", image: cashbackSimples },
-          { title: "Receba Cashback", description: "Parte do valor gasto retorna para você, e você pode escolher como usar", image: recebaCashback },
-          { title: "Use seu Cashback", description: "Retire seu cashback na sua conta bancária ou use seu saldo como desconto na próxima compra", image: useSeuCashback },
-        ].map((step, index) => (
-          <div key={index} className="flex flex-col items-start border-4 border-[#ffcc00] rounded-xl p-10 reveal">
-            <img src={step.image} alt={step.title} className="mb-10" />
-            <h2 className="mb-6 font-bold text-xl">{step.title}</h2>
-            <p className="text-lg">{step.description}</p>
-          </div>
-        ))}
-      </div>
 
       {/* Seção de Parceiros */}
-      <section className="bg-white py-10 mt-10 mb-10">
-        <h2 className="text-3xl text-center font-bold text-[#008000]">Nossos Parceiros</h2>
-        <div className="flex flex-wrap justify-center items-center gap-8 mt-8">
-          <img src={Madecode} alt="Madecode" className="h-12" />
-          <img src={Madecode} alt="QR Cook" className="h-12" />
-          <img src={Madecode} alt="Parceiro 3" className="h-12" />
-          {/* Adicione mais logos de parceiros, se necessário */}
-        </div>
-      </section>
+      <Carousel />
+      <Footer />
 
-      {/* Footer */}
-      <footer className="bg-[#ffcc00] py-10 text-white">
-        <div className="container mx-auto px-4">
-          {/* Parte superior do footer com colunas */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm md:text-base pb-8 border-b border-white">
-            {/* Coluna 1 - Sobre nós */}
-            <div>
-              <h3 className="font-bold mb-4">Sobre nós</h3>
-              <ul>
-                <li><a href="/quem-somos" className="text-[#008000]">Quem Somos</a></li>
-                <li><a href="/blog" className="text-[#008000]">Blog</a></li>
-                <li><a href="/investidores" className="text-[#008000]">Relações com Investidores</a></li>
-                <li><a href="/termos" className="text-[#008000]">Termos de Uso e Privacidade</a></li>
-              </ul>
-            </div>
-
-            {/* Coluna 2 - Para você */}
-            <div>
-              <h3 className="font-bold mb-4">Para você</h3>
-              <ul>
-                <li><a href="/como-funciona" className="text-[#008000] hover:">Como funciona</a></li>
-                <li><a href="/extensao" className="text-[#008000]">Extensão de Browser</a></li>
-                <li><a href="/lojas" className="text-[#008000]">Lojas online</a></li>
-                <li><a href="/cartao" className="text-[#008000] ">Cartão de Crédito</a></li>
-                <li><a href="/indique" className="text-[#008000]">Indique e Ganhe</a></li>
-                <li><a href="/ajuda" className="text-[#008000]">Ajuda</a></li>
-              </ul>
-            </div>
-
-            {/* Coluna 3 - Mais Cupons */}
-            <div>
-              <h3 className="font-bold mb-4">Mais Cupons</h3>
-              <ul>
-                <li><a href="/cupons-desconto" className="text-[#008000]">Como Usar Cupom de Desconto?</a></li>
-                <li><a href="/black-friday" className="text-[#008000]">Black Friday 2024</a></li>
-              </ul>
-            </div>
-
-            {/* Coluna 4 - Parcerias */}
-            <div>
-              <h3 className="font-bold mb-4">Parceria com Lojas</h3>
-              <p className="text-sm text-gray-200 mb-4">Quer ajuda para fidelizar clientes com um programa de cashback? É para todos os modelos de negócio.</p>
-              <button className="bg-transparent border-2 border-white text-white py-1 px-3 rounded hover:bg-[#ffcc00] hover:text-black">Saiba mais</button>
-            </div>
-          </div>
-
-          {/* Parte inferior do footer com botões e redes sociais */}
-          <div className="flex flex-col md:flex-row items-center justify-between mt-8 space-y-4 md:space-y-0">
-            <div className="flex flex-col items-center md:items-start">
-              <img src={logoBrazilCashbackW} alt="Brazil Cashback" className='h-14' />
-            </div>
-
-            <div className="DownloadApp flex space-x-4">
-              <a href="https://www.apple.com/br/search/Brazil-Cashback?src=globalnav" target='_blank'>
-                <img src={AppStore} alt="App Store" className="h-12" />
-              </a>
-              <a href="https://play.google.com/store/search?q=Brazil%20Cashback&c=apps&hl=pt_BR" target='_Blank'>
-                <img src={GooglePlay} alt="Google Play" className="h-12" />
-              </a>
-            </div>
-
-            <div className="SocialMedia flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white">
-                <img src={FacebookLogo} alt="Facebook Icon" className='h-10' />
-              </a>
-
-              <a href="https://api.whatsapp.com/send/?phone=%2B5586995016565&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="text-white">
-                <img src={WhatsappLogo} alt="" className='h-10' /></a>
-
-              <a href="https://www.instagram.com/madecodebrazil/" target="_blank" rel="noopener noreferrer" className="text-white">
-                <img src={InstagramLogo} alt="" className='h-10' />
-              </a>
-
-              <a href="https://www.youtube.com/results?search_query=Brazil+Cashback" target="_blank" rel="noopener noreferrer" className="text-white">
-                <img src={YoutubeLogo} alt="" className='h-10' />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white">
-                <i className="fab fa-twitter text-2xl"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }

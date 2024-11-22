@@ -1,7 +1,7 @@
 // Entrar.jsx
 import React from 'react';
 import logoBrazilCashback from '../assets/BC-verde.png';
-import Economia from '/public/Economy.svg';
+import Economia from '../assets/Economy.svg';
 
 function Login() {
     return (
@@ -30,7 +30,7 @@ function Login() {
 
             {/* Coluna Direita (Formulário) */}
             <div className="flex flex-col items-center justify-center w-full lg:w-1/2 p-4 lg:p-10">
-                <div className="shadow-lg w-full max-w-md p-6 bg-opacity-80 rounded-lg">
+                <div className="w-full max-w-md p-6">
                     <form className="space-y-4">
                         {/* Campo Nome Completo */}
                         <div>

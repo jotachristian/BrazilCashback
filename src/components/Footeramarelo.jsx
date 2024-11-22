@@ -1,7 +1,6 @@
 //src/components/Footer.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import logoBrazilCashbackW from '../assets/bc-logo-white.png';
 import AppStore from '../assets/app-store-app.png';
 import GooglePlay from '../assets/google-play-store-app.png';
 import FacebookLogo from '../assets/Facebook_Logo_Secondary.png';
@@ -10,7 +9,7 @@ import InstagramLogo from '../assets/Instagram_Glyph_White.png';
 import YoutubeLogo from '../assets/youtube-app-white-icon.png';
 
 
-function Footer(){
+function Footeramarelo(){
     return(
         <>
         {/* Footer */}
@@ -97,4 +96,4 @@ function Footer(){
     )
 }
 
-export default Footer;
+export default Footeramarelo;

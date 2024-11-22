@@ -1,6 +1,6 @@
 // Termos.jsx
 import React from 'react';
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
 
 function termos_de_servico() {
   return (
