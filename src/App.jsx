@@ -1,19 +1,16 @@
-// src/App.jsx
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 import ParaEmpresas from './pages/para_empresas';
 import Cadastro from './pages/cadastro';
-//Entrar
-import Entrar from './pages/Entrar';
+import Entrar from './pages/Entrar'; // Página de login
 import Inicio from './pages/Main/Inicio.jsx';
 
 import Home from './pages/Home';
 import TesteAgora from './pages/TesteAgora';
 
-
-//footer
+// Footer Pages
 import QuemSomos from './pages/Footer/quem_somos';
 import PoliticaDePrivacidade from './pages/Footer/politica_de_privacidade';
 import TermosdeServico from './pages/Footer/termos_de_servico';
@@ -25,9 +22,17 @@ import ComoUsarCupom from './pages/Footer/como_usar_cupom';
 import MelhoresCupons from './pages/Footer/melhores_cupons.jsx';
 
 function App() {
+  const location = useLocation(); // Obtem a rota atual
+
+  // Lista de rotas onde a Navbar deve ser ocultada
+  const hideNavbarRoutes = ['/inicio', '/entrar', '/cadastro']; // Adicione mais rotas conforme necessário
+
   return (
     <>
-      <Navbar />
+      {/* Exibe a Navbar apenas se a rota atual não estiver na lista */}
+      {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
+
+      {/* Rotas do aplicativo */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/para_empresas" element={<ParaEmpresas />} />

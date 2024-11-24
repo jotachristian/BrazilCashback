@@ -5,10 +5,10 @@ import ScrollReveal from 'scrollreveal';
 import Carousel from '../components/SponsorCarousel';
 import Gestao from '../assets/icon-gestao.gif';
 import Madecode from '../assets/madecode.png'
-import Ganheclicando from '../assets/winClick.svg';
-import Descontoloja from '../assets/discountLoja.svg';
-import Cashbacksust from '../assets/cashback.svg';
-import Convidaramigo from '../assets/inviteFriend.svg';
+import Facilidade from '../assets/Beneficios_clientes/facilidade.svg';
+import Descontos from '../assets/Beneficios_clientes/descontos.svg';
+import dinheiroDeVolta from '../assets/Beneficios_clientes/dinheiro_de_volta.svg';
+import Indique from '../assets/Beneficios_clientes/indique.svg';
 import cashbackSimples from '../assets/sacola.svg';
 import recebaCashback from '../assets/receberCash.svg';
 import useSeuCashback from '../assets/wallet.svg';
@@ -54,7 +54,7 @@ function Home() {
     <>
       <div className="flex flex-col md:flex-row items-center justify-between min-h-screen p-4 reveal lg:bg-gradient-teste">
   <div className="md:w-1/2 w-full text-center md:text-left justify-center p-6 mx-auto md:mx-32 reveal-left">
-    <h1 className="text-2xl md:text-4xl font-bold mb-6 mt-32 md:mt-20">Economize com dinheiro de volta em suas compras</h1>
+    <h1 className="text-2xl md:text-3xl font-semibold mb-6 mt-32 md:mt-20">Economize com dinheiro de volta em suas compras</h1>
     <p className="text-lg leading-relaxed text-center md:text-left mb-6">
       Comece a receber cashback em suas lojas favoritas, ganhe pontos e utilize cupons de descontos, de forma simples e segura
     </p>
@@ -91,7 +91,7 @@ function Home() {
 
     {/* Coluna de Texto */}
     <div className="w-full md:w-1/2 lg:w-7/12 p-2 md:p-10">
-      <h2 className="text-2xl md:text-4xl font-bold text-[#008000] mb-6 text-center md:text-left">Entenda como o Cashback funciona</h2>
+      <h2 className="text-3xl mb-8 text-center md:text-left">Entenda como o Cashback funciona</h2>
       <p className="text-base leading-relaxed text-left">
         Imagine ganhar dinheiro de volta toda vez que faz uma compra. Com o Brazil Cashback, você transforma suas compras do dia a dia em oportunidades de economizar e receber recompensas incríveis. É simples: quanto mais você usa, mais você recebe. Confira no vídeo como aproveitar ao máximo essa vantagem!
       </p>
@@ -100,27 +100,27 @@ function Home() {
 </section>
 
       {/* Seção de benefícios */}
-      <div className="reveal mt-20">
-        <h2 className="text-2xl text-center p-2 md:p-20 font-bold text-[#008000]">Benefícios do Brasil Cashback</h2>
+      <div className="reveal mt-20 text-center">
+        <h2 className="text-3xl text-center mb-8">Benefícios do BCB para Clientes</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 p-8 md:p-20 reveal">
-          <div className="flex flex-col items-start reveal-left">
-            <img src={Ganheclicando} alt="Exame escaneado no Tablet" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#008000]">Fácil de usar</h4>
+          <div className="flex flex-col items-center reveal-left">
+            <img src={Facilidade} alt="Exame escaneado no Tablet" className="mb-2 h-20" />
+            <h4 className="font-bold mb-2 text-center">Fácil de usar</h4>
             <p>Cadastre-se, escolha sua loja favorita e receba cashback com poucos cliques. Sem mistério, só economia!</p>
           </div>
-          <div className="flex flex-col items-start reveal">
-            <img src={Descontoloja} alt="Enfileiramento de itens" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#008000]">Descontos Exclusivos</h4>
+          <div className="text-center flex flex-col items-center reveal">
+            <img src={Descontos} alt="Enfileiramento de itens" className="mb-2 h-20" />
+            <h4 className="font-bold mb-2">Descontos Exclusivos</h4>
             <p>Aproveite ofertas em marcas populares, de moda a eletrônicos, e economize mais com cashback especial!</p>
           </div>
-          <div className="flex flex-col items-start reveal">
-            <img src={Cashbacksust} alt="Relógio" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#008000]">Dinheiro de Volta Rápido e Seguro</h4>
+          <div className="flex flex-col items-center reveal">
+            <img src={dinheiroDeVolta} alt="Relógio" className="mb-2 h-20" />
+            <h4 className="font-bold mb-2">Dinheiro de Volta Rápido e Seguro</h4>
             <p>Acumule cashback e retire seus ganhos de forma fácil e segura.</p>
           </div>
-          <div className="flex flex-col items-start reveal-right">
-            <img src={Convidaramigo} alt="Agenda" className="mb-2 w-16" />
-            <h4 className="font-bold mb-2 text-[#008000]">Ganhe Indicações e Potencialize o Cashback</h4>
+          <div className="flex flex-col items-center reveal-right">
+            <img src={Indique} alt="Agenda" className="mb-2 h-20" />
+            <h4 className="font-bold mb-2">Ganhe Indicações e Potencialize o Cashback</h4>
             <p>Convide amigos e receba bônus em suas economias! Quanto mais amigos, maior seu saldo.</p>
           </div>
         </div>
@@ -128,7 +128,7 @@ function Home() {
 
       {/* Sessão de Cupons */}
       <section className="bg-[#4caf50] py-10 mt-20">
-        <h2 className="text-2xl text-center font-bold text-white">Economize com Cupons</h2>
+        <h2 className="text-3xl text-center text-white">Economize com Cupons</h2>
         <div className="relative">
           {showBackButton && (
             <button
@@ -160,7 +160,7 @@ function Home() {
               >
                 <img src={Madecode} alt={`${cupom.empresa} Logo`} className="h-16 mb-4" />
                 <h3 className="text-sm font-semibold">{cupom.empresa}</h3>
-                <h4 className="text-xl font-bold text-[#ffcc00] my-2">{cupom.desconto}</h4>
+                <h4 className="text-xl font-bold text-[#008000] my-2">{cupom.desconto}</h4>
                 <p className="text-gray-700 text-sm">{cupom.descricao}</p>
                 <button className="mt-4 bg-transparent text-[#008000] border-[#008000] py-2 px-4 rounded-md">Pegar Cupom</button>
               </div>
@@ -177,7 +177,7 @@ function Home() {
       </section>
 
       {/* Seção de depoimentos */}
-      <h2 className="text-xl md:text-2xl text-center my-16 mt-20 font-bold text-[#008000]">Quem usa o Brazil Cashback?</h2>
+      <h2 className="text-xl md:text-3xl text-center my-16 mt-20 ">Quem usa o Brazil Cashback?</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-20">
         {[
           {
@@ -199,28 +199,28 @@ function Home() {
         ].map((user, index) => (
           <div key={index} className="flex flex-col items-start p-6 border rounded-lg border-dashed shadow-md ">
             {/* Círculo de imagem vazio */}
-            <div className="w-12 h-12 rounded-full border border-[#ffcc00] mb-4 flex-shrink-0">
+            <div className="w-12 h-12 rounded-full border border-[#008000] mb-4 flex-shrink-0">
             </div>
 
             {/* Texto do depoimento */}
             <p className="italic text-lg mb-4">{`"${user.review}"`}</p>
 
             {/* Nome do usuário */}
-            <p className="text-[#ffcc00] font-bold">— {user.name}</p>
+            <p className="text-[#008000] font-bold">— {user.name}</p>
           </div>
         ))}
       </div>
 
 
       {/* Seção explicativa de como funciona */}
-      <h2 className="text-2xl text-center mt-20 font-bold reveal text-[#008000] p-4 md:p-20">Comece a receber de maneira simples</h2>
+      <h2 className="text-3xl text-center mt-20 reveal p-4 md:p-20">Comece a receber de maneira simples</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 p-8 md:p-14 reveal">
         {[
           { title: "Compre", description: "Escolha suas lojas e marcas favoritas e finalize sua compra.", image: cashbackSimples },
           { title: "Receba Cashback", description: "Parte do valor gasto retorna para você, e você pode escolher como usar", image: recebaCashback },
           { title: "Use seu Cashback", description: "Retire seu cashback na sua conta bancária ou use seu saldo como desconto na próxima compra", image: useSeuCashback },
         ].map((step, index) => (
-          <div key={index} className="flex flex-col items-start border-3 border-[#ffcc00] rounded-xl p-6 reveal">
+          <div key={index} className="flex flex-col items-start border-3 border-[#008000] rounded-xl p-6 reveal">
             <img src={step.image} alt={step.title} className="mb-10" />
             <h2 className="mb-6 font-bold text-xl">{step.title}</h2>
             <p className="text-base">{step.description}</p>

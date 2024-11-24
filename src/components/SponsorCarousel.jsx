@@ -1,18 +1,18 @@
 // src/components/SponsorCarousel.jsx
 import React from 'react';
-import OticaPopular from '../assets/parceiros/1.png';
-import MasiEyewear from '../assets/parceiros/2.png';
-import MasiLentes from '../assets/parceiros/masi.png';
-import QuentinhasDaLu from '../assets/parceiros/4.png';
-import QrCook from '../assets/parceiros/5.png';
-import Patrao from '../assets/parceiros/6.png';
-import PicemaEnergiaSolar from '../assets/parceiros/7.png';
+import OticaPopular from '../assets/parceiros2/1.svg';
+import MasiEyewear from '../assets/parceiros2/2.svg';
+import MasiLentes from '../assets/parceiros2/3.svg';
+import QuentinhasDaLu from '../assets/parceiros2/4.svg';
+import QrCook from '../assets/parceiros2/5.svg';
+import Patrao from '../assets/parceiros2/6.svg';
+import PicemaEnergiaSolar from '../assets/parceiros2/7.svg';
 import Madecode from '../assets/parceiros/logo.png';
 
 const SponsorCarousel = () => {
   return (
-    <section className="bg-white py-10 mt-10 mb-10">
-      <h2 className="text-3xl text-center mb-8">Nossos Parceiros</h2>
+    <section className="bg-white dark:bg-black py-10 mt-10 mb-10">
+      <h2 className="text-3xl text-center mb-8 dark:text-white  ">Nossos Parceiros</h2>
       {/* Contêiner com largura máxima */}
       <div className="overflow-hidden max-w-screen-lg mx-auto">
         <div className="flex gap-8 animate-scroll">

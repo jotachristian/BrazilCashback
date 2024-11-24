@@ -77,7 +77,7 @@ const Navbar = () => {
         {menuOpen && (
           <div className="fixed top-0 left-0 w-full h-full bg-white dark:bg-gray-800 flex z-50">
             <div className="w-3/4 h-full flex flex-col pt-5 pl-4">
-              <button onClick={toggleMenu} className="text-lg text-[#008000] mb-2 p-2 border-2">Voltar</button>
+              <button onClick={toggleMenu} className="bg-transparent text-left text-lg text-[#008000] mb-2 p-2 border-2">Voltar</button>
               <a href="/" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Para você</a>
               <a href="/para_empresas" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Para sua Empresa</a>
               <a href="/cadastro" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Cadastre-se</a>

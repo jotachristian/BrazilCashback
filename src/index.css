@@ -49,6 +49,7 @@ div {
 
 .teste {
   background: linear-gradient(37deg, rgba(245, 245, 245, 0) 53%, rgba(0, 128, 0, 1) 100%);
+  border-bottom: 2px solid black;
 }
 
 .teste2 {
