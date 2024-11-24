@@ -8,7 +8,7 @@ import Madecode from '../assets/madecode.png'
 import Facilidade from '../assets/Beneficios_clientes/facilidade.svg';
 import Descontos from '../assets/Beneficios_clientes/descontos.svg';
 import dinheiroDeVolta from '../assets/Beneficios_clientes/dinheiro_de_volta.svg';
-import Indique from '../assets/Beneficios_clientes/indique.svg';
+import Indique from '../assets/Beneficios_clientes/Indique.svg';
 import cashbackSimples from '../assets/sacola.svg';
 import recebaCashback from '../assets/receberCash.svg';
 import useSeuCashback from '../assets/wallet.svg';
