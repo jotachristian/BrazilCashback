@@ -1,5 +1,5 @@
 import React from "react";
-import LogoBrazilCashback from "../../assets/Bc-verde.png";
+import LogoBrazilCashback from "../../assets/BC-verde.png";
 import banner1 from "../../assets/black_friday_banner.svg";
 
 const Dashboard = () => {
