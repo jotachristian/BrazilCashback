@@ -1,11 +1,17 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+
+//Navbar da Empresa
+import EntrarEmpresa from './pages/empresas/Entrar_empresa.jsx';
 import Footer from './components/Footer';
 
 import ParaEmpresas from './pages/para_empresas';
 import Cadastro from './pages/cadastro';
+import CadastroEmpresa from './pages/empresas/cadastro_empresa.jsx';
 import Entrar from './pages/Entrar'; // Página de login
+
 import Inicio from './pages/Main/Inicio.jsx';
+import InicioEmpresa from './pages/Main/index_empresa.jsx'
 
 import Home from './pages/Home';
 import TesteAgora from './pages/TesteAgora';
@@ -25,14 +31,12 @@ function App() {
   const location = useLocation(); // Obtem a rota atual
 
   // Lista de rotas onde a Navbar deve ser ocultada
-  const hideNavbarRoutes = ['/inicio', '/entrar', '/cadastro']; // Adicione mais rotas conforme necessário
+  const hideNavbarRoutes = ['/inicio', '/entrar', '/cadastro', '/entrar_empresa', '/index_empresa', '/cadastro_empresa']; // Adicione mais rotas conforme necessário
 
   return (
     <>
       {/* Exibe a Navbar apenas se a rota atual não estiver na lista */}
       {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
-
-      {/* Rotas do aplicativo */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/para_empresas" element={<ParaEmpresas />} />
@@ -40,6 +44,14 @@ function App() {
         <Route path="/entrar" element={<Entrar />} />
         <Route path="/testeagora" element={<TesteAgora />} />
         <Route path="/inicio" element={<Inicio />} />
+        
+        {/* Navbar Empresa */}
+
+        <Route path="/entrar_empresa" element={<EntrarEmpresa />} />
+        <Route path="/index_empresa" element={<InicioEmpresa />} />
+        <Route path="/cadastro_empresa" element={<CadastroEmpresa />} />
+
+        {/* Footer */}
         <Route path="/footer" element={<Footer />} />
         <Route path="quem_somos" element={<QuemSomos />} />
         <Route path="/termos_de_servico" element={<TermosdeServico />} />

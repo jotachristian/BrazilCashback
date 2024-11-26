@@ -14,17 +14,17 @@ function Footer(){
     return(
         <>
         {/* Footer */}
-      <footer className="bg-[#008000] py-10 text-white">
+      <footer className="bg-[#008000] py-10 text-white tracking-normal text-[14px]">
         <div className="container mx-auto px-4">
           {/* Parte superior do footer com colunas */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm md:text-base pb-8 border-b border-gray-400">
             {/* Coluna 1 - Sobre nós */}
             <div>
               <h3 className="font-bold mb-4">Sobre nós</h3>
-              <ul>
-                <li><a href="/quem_somos">Quem Somos</a></li>
-                <li><a href="/termos_de_servico">Termos de Serviço</a></li>
-                <li><a href="/politica_de_privacidade">Política de Privacidade</a></li>
+              <ul className='text-gray-100'>
+                <li><a href="/quem_somos">$ Quem Somos</a></li>
+                <li><a href="/termos_de_servico">$ Termos de Serviço</a></li>
+                <li><a href="/politica_de_privacidade">$ Política de Privacidade</a></li>
               </ul>
             </div>
 

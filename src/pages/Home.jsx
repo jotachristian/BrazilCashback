@@ -8,7 +8,7 @@ import Madecode from '../assets/madecode.png'
 import Facilidade from '../assets/Beneficios_clientes/facilidade.svg';
 import Descontos from '../assets/Beneficios_clientes/descontos.svg';
 import dinheiroDeVolta from '../assets/Beneficios_clientes/dinheiro_de_volta.svg';
-import Indique from '../assets/Beneficios_clientes/Indique.svg';
+import Indique from '../assets/Beneficios_clientes/indique.svg';
 import cashbackSimples from '../assets/sacola.svg';
 import recebaCashback from '../assets/receberCash.svg';
 import useSeuCashback from '../assets/wallet.svg';
@@ -54,16 +54,16 @@ function Home() {
     <>
       <div className="flex flex-col md:flex-row items-center justify-between min-h-screen p-4 reveal lg:bg-gradient-teste">
   <div className="md:w-1/2 w-full text-center md:text-left justify-center p-6 mx-auto md:mx-32 reveal-left">
-    <h1 className="text-2xl md:text-3xl font-semibold mb-6 mt-32 md:mt-20">Economize com dinheiro de volta em suas compras</h1>
-    <p className="text-lg leading-relaxed text-center md:text-left mb-6">
-      Comece a receber cashback em suas lojas favoritas, ganhe pontos e utilize cupons de descontos, de forma simples e segura
+    <h1 className="text-3xl font-semibold mb-6 mt-32 md:mt-20">Economize com <br /> dinheiro de volta <br /> em suas compras</h1>
+    <p className="text-lg md:text-base leading-relaxed text-justify p-2 md:p-0 md:text-left mb-6">
+    Descubra uma maneira simples e segura de economizar:  receba cashback em suas lojas favoritas, acumule pontos exclusivos e aproveite cupons de desconto incríveis. Tudo isso ao alcance de um clique!
     </p>
     <div className="flex gap-4 justify-center md:justify-start">
       <a href="/testeagora">
-        <button className="bg-[#008000] text-white py-2 px-2 md:px-4 rounded-lg ">GANHE AGORA</button>
+        <button className="border-2 border-[#008000] bg-[#008000] text-white py-2 px-4 rounded-lg">Saiba mais</button>
       </a>
-      <a href="/contato">
-        <button className="border-2 border-[#008000] text-[#008000] py-2 px-4 rounded-lg bg-transparent">CRIAR CONTA</button>
+      <a href="/cadastro">
+        <button className="border-2 border-[#008000] text-[#008000] py-2 px-4 rounded-lg bg-transparent">Crie sua conta</button>
       </a>
     </div>
   </div>
@@ -91,7 +91,7 @@ function Home() {
 
     {/* Coluna de Texto */}
     <div className="w-full md:w-1/2 lg:w-7/12 p-2 md:p-10">
-      <h2 className="text-3xl mb-8 text-center md:text-left">Entenda como o Cashback funciona</h2>
+      <h2 className="text-3xl mb-8 text-center md:text-left font-semibold">Entenda como o Cashback funciona</h2>
       <p className="text-base leading-relaxed text-left">
         Imagine ganhar dinheiro de volta toda vez que faz uma compra. Com o Brazil Cashback, você transforma suas compras do dia a dia em oportunidades de economizar e receber recompensas incríveis. É simples: quanto mais você usa, mais você recebe. Confira no vídeo como aproveitar ao máximo essa vantagem!
       </p>
@@ -101,7 +101,7 @@ function Home() {
 
       {/* Seção de benefícios */}
       <div className="reveal mt-20 text-center">
-        <h2 className="text-3xl text-center mb-8">Benefícios do BCB para Clientes</h2>
+        <h2 className="text-3xl text-center mb-8 font-semibold">Melhores benefícios para Clientes BCB </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 p-8 md:p-20 reveal">
           <div className="flex flex-col items-center reveal-left">
             <img src={Facilidade} alt="Exame escaneado no Tablet" className="mb-2 h-20" />
@@ -128,11 +128,11 @@ function Home() {
 
       {/* Sessão de Cupons */}
       <section className="bg-[#4caf50] py-10 mt-20">
-        <h2 className="text-3xl text-center text-white">Economize com Cupons</h2>
+        <h2 className="text-3xl text-center text-white font-semibold">Melhores cupons para você economizar</h2>
         <div className="relative">
           {showBackButton && (
             <button
-              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-[#008000] text-white p-3 rounded-full shadow-md hover:bg-[#33a133] text-2xl"
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-[#008000] text-white p-3 m-2 rounded-full shadow-md hover:bg-[#33a133] text-2xl"
               onClick={scrollLeft}
             >
               &#8249;
@@ -168,7 +168,7 @@ function Home() {
           </div>
 
           <button
-            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#008000] text-white p-3 rounded-full shadow-md hover:bg-[#33a133] text-2xl"
+            className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#008000] text-white p-3 m-2 rounded-full shadow-md hover:bg-[#33a133] text-2xl"
             onClick={scrollRight}
           >
             &#8250;
@@ -177,7 +177,7 @@ function Home() {
       </section>
 
       {/* Seção de depoimentos */}
-      <h2 className="text-xl md:text-3xl text-center my-16 mt-20 ">Quem usa o Brazil Cashback?</h2>
+      <h2 className="text-3xl text-center my-16 mt-20 font-semibold ">Quem usa o Brazil Cashback?</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-20">
         {[
           {
@@ -213,7 +213,7 @@ function Home() {
 
 
       {/* Seção explicativa de como funciona */}
-      <h2 className="text-3xl text-center mt-20 reveal p-4 md:p-20">Comece a receber de maneira simples</h2>
+      <h2 className="text-3xl text-center mt-20 reveal p-4 md:p-20 font-semibold">Comece a receber de maneira simples</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 p-8 md:p-14 reveal">
         {[
           { title: "Compre", description: "Escolha suas lojas e marcas favoritas e finalize sua compra.", image: cashbackSimples },

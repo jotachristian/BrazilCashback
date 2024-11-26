@@ -1,13 +1,14 @@
 // src/pages/para_empresas.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import ScrollReveal from 'scrollreveal';
+import NavbarAmarela from '../components/empresas/Navbar_amarela';
 import Gestao2 from '../assets/icon-gestao-y.gif';
 import Cadastre from '../assets/Etapas_empresa/cadastre.svg';
 import Configure from '../assets/Etapas_empresa/configure.svg';
 import Fidelize from '../assets/Etapas_empresa/fidelize.svg';
 import CashbackChart from '../components/CashbackChart';
 import Carousel from '../components/SponsorCarousel';
-import Footer from '../components/Footer_amarelo';
+import Footer from '../components/empresas/Footer_amarelo';
 
 
 
@@ -57,23 +58,23 @@ function para_empresas() {
   return (
     <>
       {/* Hero Section - Principal */}
-      
-      <div className="flex flex-col md:flex-row items-center justify-between min-h-screen p-2 reveal md:bg-gradient-teste2 border-b border-transparent/70 mt-32 md:mt-0">
-        <div className="md:w-1/2 w-full text-center md:text-left justify-center p-4 mx-auto md:mx-32 reveal-left">
+      <NavbarAmarela />
+      <div className="flex flex-col md:flex-row items-center justify-between min-h-screen p-2 reveal md:bg-gradient-teste2 mt-10 md:mt-0">
+        <div className="md:w-1/2 w-full text-center md:text-left justify-center p-6 mx-auto md:mx-32 reveal-left mt-20">
 
           <h1 className="text-3xl  font-semibold text-center md:text-left p-2">
             Transforme clientes em fãs: Fidelize e aumente suas vendas com o Brazil Cashback.
           </h1>
-          <p className="text-base leading-relaxed p-2 text-center tracking-tight md:text-left">
-            Ofereça cashback aos seus clientes e veja suas vendas crescerem. Uma solução simples, eficiente e personalizada para o seu negócio.
+          <p className="text-lg leading-relaxed text-justify tracking-tight md:text-left p-2">
+            Ofereça cashback aos seus clientes e veja suas vendas crescerem, em uma solução simples, eficiente e personalizada para o seu negócio.
           </p>
 
           <div className="flex gap-3 mt-2 p-2">
             <a href="/testeagora">
-              <button className="text-black md:text-base bg-[#ffcc00] rounded-lg px-2 py-2 hover:bg-yellow-500 hover:text-black hover:border-2 hover:border-black ">CADASTRE SUA EMPRESA</button>
+              <button className="text-black md:text-base bg-[#ffcc00] rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-black hover:border-2 hover:border-black ">Cadastre sua empresa</button>
             </a>
             <a href="/contato">
-              <button className="border-2 border-[#ffcc00] text-[#ffcc00] hover:border-yellow-500 rounded-lg bg-transparent hover:border-2 py-2 px-2">AGENDE UMA DEMONSTRAÇÃO</button>
+              <button className="border-2 border-[#ffcc00] text-[#ffcc00] rounded-lg bg-transparent hover:border-black hover:border-2 py-2 px-2">Agendar demonstração</button>
             </a>
           </div>
         </div>

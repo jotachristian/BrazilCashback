@@ -11,8 +11,8 @@ import Madecode from '../assets/parceiros/logo.png';
 
 const SponsorCarousel = () => {
   return (
-    <section className="bg-white dark:bg-black py-10 mt-10 mb-10">
-      <h2 className="text-3xl text-center mb-8 dark:text-white  ">Nossos Parceiros</h2>
+    <section className="bg-white border-b-2 dark:bg-black py-10 mt-10 mb-10">
+      <h2 className="text-3xl text-center mb-8 dark:text-white border-b-2 pb-8 font-semibold">Nossos Parceiros</h2>
       {/* Contêiner com largura máxima */}
       <div className="overflow-hidden max-w-screen-lg mx-auto">
         <div className="flex gap-8 animate-scroll">

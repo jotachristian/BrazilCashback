@@ -19,6 +19,15 @@
   font-family: "Poppins";
 }
 
+p {
+  color: #5a5a5a;
+}
+@media (prefers-color-scheme: dark) {
+  p {
+    color: #ffffff; /* Cor clara para o texto no modo escuro */
+  }
+}
+
 div {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -104,18 +113,6 @@ a.active-link {
 .dark a.active-link {
   border-color: white;
 }
-
-/* Link Hover Colors */
-a:hover {
-  color: #008000;
-  /* Cor verde para hover no modo claro */
-}
-
-.dark a:hover {
-  color: #ffcc00;
-  /* Cor amarela para hover no modo escuro */
-}
-
 /* Personalização para a página Para Empresa */
 .underline-initial {
   border-bottom: 2px solid currentColor;
@@ -142,10 +139,6 @@ button {
   transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: greenyellow;
-}
-
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -158,10 +151,6 @@ button:focus-visible {
     background-color: #ffffff;
   }
 
-  a:hover {
-    color: green;
-  }
-
   .botaoEntrar {
     color: white;
     background-color: #008492;
@@ -170,10 +159,6 @@ button:focus-visible {
   .botaoEntrar:hover {
     color: white;
     background-color: green;
-  }
-
-  button:hover {
-    border-color: green;
   }
 }
 
