@@ -27,27 +27,46 @@ const IndexEmpresa = () => {
       {/* Menu Sanduíche */}
       <div className="fixed top-0 left-0 w-full shadow-md z-50 bg-white">
         <div className="flex justify-between items-center px-4 py-2">
-          <button
-            className="flex flex-col space-y-1 focus:outline-none bg-transparent"
-            onClick={toggleMenu}
-          >
-            <span className="block w-6 h-1 bg-gray-800"></span>
-            <span className="block w-6 h-1 bg-gray-800"></span>
-            <span className="block w-6 h-1 bg-gray-800"></span>
-          </button>
-          <h1 className="flex flex-col itens-start text-lg font-semibold">
-            Brazil Cashback
-          </h1>
+          {/* Logo e Nome */}
+          <div className="flex items-center">
+            <button
+              className="flex flex-col space-y-1 focus:outline-none bg-transparent"
+              onClick={toggleMenu}
+            >
+              <span className="block w-6 h-1 bg-gray-800"></span>
+              <span className="block w-6 h-1 bg-gray-800"></span>
+              <span className="block w-6 h-1 bg-gray-800"></span>
+            </button>
+            <h1 className="ml-4 text-lg font-semibold text-black">
+              Brazil Cashback
+            </h1>
+          </div>
+
+          {/* Opções à direita */}
+          <div className="flex items-center space-x-4 sm:space-x-6">
+            <button className="hidden sm:block bg-[#ffcc00] text-white px-4 py-2 rounded-md hover:bg-yellow-500">
+              Gerar Cashback
+            </button>
+            <p className="hidden sm:block text-gray-800 font-semibold">
+              Saldo: R$ 121,75
+            </p>
+            <div className="flex items-center space-x-4">
+              <i className="fas fa-bell text-gray-600 text-lg cursor-pointer"></i>
+              <button className="bg-green-500 text-white w-8 h-8 flex items-center justify-center rounded-full">
+                S
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 w-64 h-full shadow-md z-40 transform ${
+        className={`fixed top-0 left-0 w-full h-full shadow-md z-40 transform ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 bg-white`}
+        } transition-transform duration-300 bg-white md:w-64`}
       >
-        <div className="p-4 text-2xl font-semibold border-b">
+        <div className="flex flex-col items-center justify-start p-4 text-2xl font-semibold border-b">
           Brazil Cashback
         </div>
         <nav className="p-4">
@@ -58,7 +77,7 @@ const IndexEmpresa = () => {
                 className="flex justify-between items-center hover:bg-gray-100 p-2 rounded-md cursor-pointer"
                 onClick={toggleSubmenu}
               >
-                <h1 className="text-base text-[#008000] font-semibold">
+                <h1 className="text-base text-[#ffcc00] font-semibold">
                   Dashboard
                 </h1>
                 <span className={`transform ${submenuOpen ? "rotate-180" : ""}`}>
@@ -83,15 +102,13 @@ const IndexEmpresa = () => {
               )}
             </li>
 
-            {/* Cashback com Submenu */}
+            {/* Gestão com Submenu */}
             <li>
               <div
                 className="flex justify-between items-center hover:bg-gray-100 p-2 rounded-md cursor-pointer"
                 onClick={toggleSubmenuGestao}
               >
-                <h1 className="text-base font-semibold">
-                  Gestão
-                </h1>
+                <h1 className="text-base font-semibold">Gestão</h1>
                 <span
                   className={`transform ${
                     submenuGestaoOpen ? "rotate-180" : ""
@@ -130,9 +147,7 @@ const IndexEmpresa = () => {
                 className="flex justify-between items-center hover:bg-gray-100 p-2 rounded-md cursor-pointer"
                 onClick={toggleSubmenuFinanceiro}
               >
-                <h1 className="text-base font-semibold">
-                  Finaceiro
-                </h1>
+                <h1 className="text-base font-semibold">Financeiro</h1>
                 <span
                   className={`transform ${
                     submenuFinanceiroOpen ? "rotate-180" : ""
@@ -160,7 +175,8 @@ const IndexEmpresa = () => {
             </li>
 
             <li className="hover:bg-gray-100 p-2 rounded-md">
-              <p className="font-semibold text-black">Ajuda</p></li>
+              <p className="font-semibold text-black">Ajuda</p>
+            </li>
             <li className="hover:bg-gray-100 p-2 rounded-md">
               Indicação de Amigos
             </li>
@@ -180,49 +196,19 @@ const IndexEmpresa = () => {
 
         {/* Top Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {[
-            { title: "Cadastrar", icon: "➕", color: "bg-blue-500" },
-            { title: "13 Vendas", icon: "👥", color: "bg-green-500" },
-            { title: "Pontuar", icon: "🐷", color: "bg-yellow-500" },
-            { title: "Premiar", icon: "🏆", color: "bg-purple-500" },
-          ].map((card, index) => (
-            <div
-              key={index}
-              className={`p-4 rounded-lg shadow-lg ${card.color} text-white`}
-            >
-              <div className="flex justify-between items-center">
-                <div className="text-lg font-semibold">{card.title}</div>
-                <div className="text-2xl">{card.icon}</div>
+          {[{ title: "Cadastrar", icon: "➕", color: "bg-blue-500" }].map(
+            (card, index) => (
+              <div
+                key={index}
+                className={`p-4 rounded-lg shadow-lg ${card.color} text-white`}
+              >
+                <div className="flex justify-between items-center">
+                  <div className="text-lg font-semibold">{card.title}</div>
+                  <div className="text-2xl">{card.icon}</div>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Metrics Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-6 bg-white shadow-lg rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Vendas</h3>
-            <ul className="text-gray-600">
-              <li>91 Novas</li>
-              <li>37 Premiadas</li>
-              <li>20 Próximas a Bonificar</li>
-            </ul>
-          </div>
-          <div className="p-6 bg-white shadow-lg rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Clientes</h3>
-            <ul className="text-gray-600">
-              <li>44 Cadastrados</li>
-              <li>44 Ativos</li>
-              <li>0 Congelados</li>
-            </ul>
-          </div>
-          <div className="p-6 bg-white shadow-lg rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Comportamento</h3>
-            <ul className="text-gray-600">
-              <li>Ticket Médio: R$132,03</li>
-              <li>Recorrência: 10 dias</li>
-            </ul>
-          </div>
+            )
+          )}
         </div>
       </div>
     </div>
