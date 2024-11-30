@@ -47,7 +47,7 @@ function Entrar_empresa() {
               <input
                 type="email"
                 id="email"
-                className="bg-transparent mt-1 block w-full px-3 py-2 border border-[#ffcc00] rounded-md shadow-sm focus:border-[#008492] sm:text-sm"
+                className="bg-transparent mt-1 block w-full px-3 py-2 border-2 border-[#C0BBCD] rounded-md shadow-sm focus:border-[#008492] sm:text-sm"
                 required
               />
             </div>
@@ -59,7 +59,7 @@ function Entrar_empresa() {
               <input
                 type="password"
                 id="password"
-                className="bg-transparent mt-1 block w-full px-3 py-2 border border-[#ffcc00] rounded-md shadow-sm focus:ring-[#008492] focus:border-[#008492] sm:text-sm"
+                className="bg-transparent mt-1 block w-full px-3 py-2 border-2 border-[#C0BBCD] rounded-md shadow-sm focus:ring-[#008492] focus:border-[#008492] sm:text-sm"
                 required
               />
             </div>
@@ -69,7 +69,7 @@ function Entrar_empresa() {
               <label className="flex items-center text-sm">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 text-[#008492] border-gray-300 rounded focus:bg-[#008000]"
+                  className="h-5 w-5 text-[#008492] border-gray-300 rounded hover:bg-transparent"
                 />
                 <span className="ml-2 text-[#ffcc00]">Permanecer conectado</span>
               </label>

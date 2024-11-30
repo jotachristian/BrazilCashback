@@ -84,7 +84,7 @@ const NavbarAmarela = () => {
               <a href="/" className="text-[#ffcc00] text-lg py-4 w-full" onClick={toggleMenu}>Para você</a>
               <a href="/para_empresas" className="text-[#ffcc00] text-lg py-4 w-full" onClick={toggleMenu}>Para sua Empresa</a>
               <a href="/cadastro_empresa" className="text-[#ffcc00] text-lg py-4 w-full" onClick={toggleMenu}>Cadastre-se</a>
-              <a href="/entrar_empresas" className="text-[#ffcc00] text-lg my-4 w-full" onClick={toggleMenu}>Entrar</a>
+              <a href="/entrar_empresa" className="text-[#ffcc00] text-lg my-4 w-full" onClick={toggleMenu}>Entrar</a>
             </div>
             <div className="w-1/4 h-full bg-transparent/70" onClick={toggleMenu}></div>
           </div>
