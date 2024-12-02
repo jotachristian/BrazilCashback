@@ -15,6 +15,7 @@ import InicioEmpresa from './pages/Main/index_empresa.jsx'
 
 import Home from './pages/Home';
 import TesteAgora from './pages/TesteAgora';
+import Dashboard from './pages/Main/dashboard.jsx';
 
 // Footer Pages
 import QuemSomos from './pages/Footer/quem_somos';
@@ -50,6 +51,8 @@ function App() {
         <Route path="/entrar_empresa" element={<EntrarEmpresa />} />
         <Route path="/index_empresa" element={<InicioEmpresa />} />
         <Route path="/cadastro_empresa" element={<CadastroEmpresa />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
 
         {/* Footer */}
         <Route path="/footer" element={<Footer />} />
