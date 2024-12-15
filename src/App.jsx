@@ -14,7 +14,7 @@ import Inicio from './pages/Main/Inicio.jsx';
 import InicioEmpresa from './pages/Main/index_empresa.jsx'
 
 import Home from './pages/Home';
-import TesteAgora from './pages/TesteAgora';
+import TesteAgora from './pages/saiba_mais.jsx';
 import Dashboard from './pages/Main/dashboard.jsx';
 
 // Footer Pages
@@ -43,7 +43,7 @@ function App() {
         <Route path="/para_empresas" element={<ParaEmpresas />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/entrar" element={<Entrar />} />
-        <Route path="/testeagora" element={<TesteAgora />} />
+        <Route path="/saiba_mais" element={<TesteAgora />} />
         <Route path="/inicio" element={<Inicio />} />
         
         {/* Navbar Empresa */}

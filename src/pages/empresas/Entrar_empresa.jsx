@@ -1,97 +1,166 @@
-// Entrar.jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import logoBrazilCashback from '../../assets/BC-verde.png';
-import Financeiro from '../../assets/Finance.svg';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import logoBrazilCashback from "../../assets/BC-verde.png";
+import Economia from "../../assets/Economy.svg";
 
-function Entrar_empresa() {
-  const navigate = useNavigate(); // Hook para redirecionamento
+function EntrarEmpresa() {
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate('/index_empresa'); // Redireciona para a página Overview
+  function copiarCupom(texto) {
+    navigator.clipboard.writeText(texto)
+      .then(() => {
+        // Exibir uma animação ou mensagem de sucesso aqui
+        console.log('Cupom copiado com sucesso!');
+      })
+      .catch((err) => {
+        console.error('Falha ao copiar o cupom:', err);
+      });
+  }
+
+  // Estado para armazenar os dados do formulário
+  const [formData, setFormData] = useState({
+    email: "",
+    senha: "",
+  });
+
+  // Estado para gerenciar erros de validação
+  const [errors, setErrors] = useState({});
+  const [backendError, setBackendError] = useState("");
+
+  // Função para atualizar o estado do formulário
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  // Função de validação básica
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Validações básicas
+    if (!formData.email) newErrors.email = "O E-mail é obrigatório";
+    if (!formData.senha) newErrors.senha = "A Senha é obrigatória";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Função de submissão do formulário
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    const submitData = { ...formData };
+
+    try {
+      const response = await fetch(
+        "http://localhost/Brazil_Cashback/view/backend/api/entrar_empresa.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submitData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setBackendError(data.message || "Erro ao realizar o login.");
+        return;
+      }
+
+      console.log("Resposta do backend:", data);
+      alert("Login realizado com sucesso!");
+      navigate("/index_empresa"); // Redireciona para a página principal ou dashboard
+    } catch (error) {
+      console.error("Erro:", error);
+      setBackendError("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+    }
   };
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row">
-      {/* Logo visível em todas as telas */}
-      <div className="flex items-center justify-between w-full mt-6 lg:fixed lg:top-0 lg:left-2 lg:w-1/2 lg:mt-12">
-        <div className="absolute top-0 left-0 w-full p-4 flex justify-center lg:justify-start">
-          <a href="/">
-            <img src={logoBrazilCashback} alt="Logo Brazil Cashback" className="h-16" />
-          </a>
-        </div>
+    <div className="min-h-screen flex flex-col lg:flex-row relative">
+      {/* Botão de Fechar (X) */}
+      <button
+        onClick={() => navigate('/')} // Redireciona para a página raiz
+        className="absolute top-4 right-4 lg:top-6 lg:right-6 text-gray-600 hover:text-gray-800 text-6xl font-bold focus:outline-none w-20 h-20 flex items-center justify-center rounded-full bg-transparent transition"
+      >
+        &times;
+      </button>
+
+      {/* Logo no topo */}
+      <div className="absolute top-14 left-1/2 transform -translate-x-1/2 lg:translate-x-0 lg:top-10 lg:left-10 flex justify-center w-full lg:w-auto z-10">
+        <a href="/">
+          <img
+            src={logoBrazilCashback}
+            alt="Logo Brazil Cashback"
+            className="h-16"
+          />
+        </a>
       </div>
 
-      {/* Espaço para compensar o header fixo em telas grandes */}
-      <div className="pt-16 lg:hidden"></div>
-
-      {/* Lado esquerdo com a imagem de ilustração (somente em telas grandes) */}
-      <div className="hidden lg:flex lg:flex-col lg:w-1/2 items-center justify-center p-14">
-        <div className="w-3/4 h-96 flex items-center justify-center">
-          <p>
-            <img src={Financeiro} alt="Moça economizando com moedas" className="h-80" />
-          </p>
-        </div>
+      {/* Coluna Esquerda */}
+      <div className="hidden lg:flex flex-col items-center lg:items-start w-full lg:w-1/2 p-10 pt-44 lg:pl-20 lg:p-44">
+        <img
+          src={Economia}
+          alt="Porquinho Financeiro"
+          className="w-full max-w-xs lg:max-w-none mt-4 pl-0 md:pl-8"
+        />
       </div>
 
-      {/* Lado direito com o formulário */}
-      <div className="flex flex-col items-center justify-center w-full lg:w-1/2 p-4 lg:p-6">
-        {/* Formulário de login com fundo transparente */}
-        <div className="rounded-3xl shadow-lg w-full max-w-md p-6">
-          <form className="space-y-4 lg:space-y-6">
-            <div>
-              <h1 className="text-center m-10 pb-2">Entrar</h1>
-              <label htmlFor="email" className="block text-sm font-medium">
-                Email ou CPF
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="bg-transparent mt-1 block w-full px-3 py-2 border-2 border-[#C0BBCD] rounded-md shadow-sm focus:border-[#008492] sm:text-sm"
-                required
-              />
-            </div>
+      {/* Coluna Direita (Formulário) */}
+      <div className="flex flex-col items-center justify-center w-full lg:w-1/2 p-4 lg:p-10">
+        <div className="w-full max-w-md p-6">
+          <h1 className="text-4xl p-6 text-center">Entrar</h1>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium">
-                Senha
-              </label>
-              <input
-                type="password"
-                id="password"
-                className="bg-transparent mt-1 block w-full px-3 py-2 border-2 border-[#C0BBCD] rounded-md shadow-sm focus:ring-[#008492] focus:border-[#008492] sm:text-sm"
-                required
-              />
-            </div>
+           
+          {backendError && (
+            <p className="text-red-500 text-sm mb-4">{backendError}</p>
+          )}
 
-            {/* Opções extras */}
-            <div className="flex flex-col lg:flex-row items-center justify-between space-y-2 lg:space-y-0">
-              <label className="flex items-center text-sm">
-                <input
-                  type="checkbox"
-                  className="h-5 w-5 text-[#008492] border-gray-300 rounded hover:bg-transparent"
-                />
-                <span className="ml-2 text-[#ffcc00]">Permanecer conectado</span>
-              </label>
-              <a href="/esqueci-senha" className="text-sm text-[#ffcc00]">
-                Esqueci a senha
-              </a>
-            </div>
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="E-mail"
+              className={`w-full p-2 border rounded-lg mb-2 ${
+                errors.email ? "border-red-500" : ""
+              }`}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
 
-            {/* Botão de login */}
+            <input
+              type="password"
+              name="senha"
+              value={formData.senha}
+              onChange={handleChange}
+              placeholder="Senha"
+              className={`w-full p-2 border rounded-lg mb-2 ${
+                errors.senha ? "border-red-500" : ""
+              }`}
+            />
+            {errors.senha && (
+              <p className="text-red-500 text-sm">{errors.senha}</p>
+            )}
+
             <button
-              type="button"
-              onClick={handleLogin} // Redireciona ao clicar
-              className="w-full bg-[#ffcc00] text-white rounded-lg py-2 px-4 mt-4 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-opacity-50"
+              type="submit"
+              className="w-full bg-[#ffcc00] text-white p-2 rounded-lg hover:bg-green-600"
             >
               Entrar
             </button>
-
-            <div className="text-center mt-4">
-              <a href="/cadastro" className="text-sm text-[#ffec72]">
-                Não tem uma conta? Cadastre-se
-              </a>
-            </div>
           </form>
         </div>
       </div>
@@ -99,4 +168,4 @@ function Entrar_empresa() {
   );
 }
 
-export default Entrar_empresa;
+export default EntrarEmpresa;

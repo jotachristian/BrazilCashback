@@ -37,7 +37,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${isEmpresaPage ? 'bg-transparent' : 'bg-transparent'} py-2 absolute top-0 left-0 w-full z-50 transition-colors duration-300 mt-2`}
+      className={`$ {
+        isEmpresaPage ? 'bg-transparent' : 'bg-transparent'
+      } py-2 absolute top-0 left-0 w-full z-50 transition-colors duration-300 mt-2`}
     >
       <div className="flex justify-between items-center px-10 md:px-8">
         <div className="md:hidden flex justify-end">
@@ -58,7 +60,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex-grow flex justify-center md:justify-start">
-          <a href={isEmpresaPage ? "/para_empresas" : "/"} className="flex">
+          <a href={isEmpresaPage ? '/para_empresas' : '/'} className="flex">
             <img
               src={logoBrazilCashback}
               alt="Brazil Cashback"
@@ -75,15 +77,15 @@ const Navbar = () => {
         </div>
 
         {menuOpen && (
-          <div className="fixed top-0 left-0 w-full h-full bg-white dark:bg-gray-800 flex z-50">
-            <div className="w-3/4 h-full flex flex-col pt-5 pl-4">
+          <div className="fixed top-0 left-0 w-full h-full flex z-50">
+            <div className="w-1/2 h-full flex flex-col pt-5 pl-4 bg-white dark:bg-gray-800">
               <button onClick={toggleMenu} className="bg-transparent text-left text-lg text-gray-400 mb-2 p-2 border-2">Voltar</button>
               <a href="/" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Para você</a>
               <a href="/para_empresas" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Para sua Empresa</a>
               <a href="/cadastro" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Cadastre-se</a>
               <a href="/entrar" className="text-[#008000] text-lg my-4 w-full" onClick={toggleMenu}>Entrar</a>
             </div>
-            <div className="w-1/4 h-full bg-transparent/70" onClick={toggleMenu}></div>
+            <div className="w-1/2 h-full bg-transparent/40" onClick={toggleMenu}></div>
           </div>
         )}
       </div>

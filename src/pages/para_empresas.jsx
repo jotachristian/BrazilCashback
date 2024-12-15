@@ -206,9 +206,11 @@ function para_empresas() {
                   Suporte via e-mail.
                 </li>
               </ul>
+              <a href="/cadastro_empresa">
               <button className="bg-[#ffcc00] rounded-md py-2 px-4 hover:bg-yellow-500 transition duration-300">
                 Começar agora
               </button>
+              </a>
             </div>
 
             {/* Plano Padrão */}
@@ -239,9 +241,11 @@ function para_empresas() {
                   campanhas promocionais
                 </li>
               </ul>
+              <a href="/cadastro_empresa">
               <button className="bg-[#ffcc00] rounded-md py-2 px-4 hover:bg-yellow-500 transition duration-300">
                 Começar agora
               </button>
+              </a>
             </div>
 
             {/* Plano BCB Plus */}
@@ -275,9 +279,11 @@ function para_empresas() {
                   Recursos Avançados e Suporte 24h
                 </li>
               </ul>
+              <a href="/cadastro_empresa">
               <button className="bg-[#ffcc00] rounded-md py-2 px-4 hover:bg-yellow-500 transition duration-300">
                 Começar agora
               </button>
+              </a>
             </div>
           </div>
         </div>
