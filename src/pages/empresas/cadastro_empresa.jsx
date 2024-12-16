@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import logoBrazilCashback from "../../assets/BC-verde.png";
-import Economia from "../../assets/Economy.svg";
+import Economia from "../../assets/Economy2.svg";
 
 function CadastroEmpresa() {
   const navigate = useNavigate();
@@ -17,52 +17,48 @@ function CadastroEmpresa() {
     confirmar_senha: "",
     telefone: "",
     categoria_empresa: "",
+    plano: "",
   });
 
   // Estado para gerenciar erros de validação
   const [errors, setErrors] = useState({});
 
-  // Função para atualizar o estado do formulário
+  // Estado para controlar a etapa atual do registro
+  const [step, setStep] = useState(1);
+
+  // Estado para controlar a exibição da mensagem de sucesso
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+    setErrors((prevState) => ({ ...prevState, [name]: "" })); // Limpar erro ao digitar
   };
 
-  // Função de validação básica
   const validateForm = () => {
     const newErrors = {};
 
-    // Validações básicas
-    if (!formData.razao_social)
-      newErrors.razao_social = "A Razão Social é obrigatória";
+    if (!formData.razao_social) newErrors.razao_social = "A Razão Social é obrigatória";
     if (!formData.cnpj) newErrors.cnpj = "O CNPJ é obrigatório";
     if (!formData.email) newErrors.email = "O E-mail é obrigatório";
     if (!formData.senha) newErrors.senha = "A Senha é obrigatória";
-
-    // Validação de confirmação de senha
-    if (formData.senha !== formData.confirmar_senha) {
+    if (formData.senha !== formData.confirmar_senha)
       newErrors.confirmar_senha = "As senhas não coincidem";
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Função de submissão do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     const submitData = { ...formData };
     delete submitData.confirmar_senha;
-
-    console.log("Dados enviados:", submitData);
 
     try {
       const response = await fetch(
@@ -77,152 +73,160 @@ function CadastroEmpresa() {
       );
 
       const data = await response.json();
-      console.log("Resposta do backend:", data);
+
+      if (!response.ok) {
+        if (data.errors) {
+          setErrors(data.errors);
+        } else {
+          setErrors({ global: "O Email ou CNPJ já existem. Verifique os dados e tente novamente." });
+        }
+      } else {
+        setShowSuccess(true);
+        setErrors({});
+        setStep(3); // Avança para o passo 3
+      }
     } catch (error) {
-      console.error("Erro:", error);
+      console.error("Erro no cadastro:", error);
+      setErrors({ global: "Erro ao conectar com o servidor. Tente novamente." });
     }
+  };
+
+  const nextStep = () => {
+    if (step === 1 && !formData.plano) {
+      setErrors({ plano: "Selecione um plano" });
+      return;
+    }
+    setStep(step + 1);
   };
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row relative">
-      {/* Botão de Fechar (X) */}
-      <button
-        onClick={() => navigate("/")} // Redireciona para a página raiz
-        className="absolute top-4 right-4 lg:top-14 lg:right-14 text-gray-600 hover:text-gray-800 text-3xl font-bold focus:outline-none flex items-center justify-center rounded-full bg-transparent transition"
-      >
-        <FontAwesomeIcon icon={faX}/>
+      <button onClick={() => navigate("/")} className="absolute top-4 right-4 text-gray-600 text-2xl bg-transparent p-14">
+        <FontAwesomeIcon icon={faX} />
       </button>
-
-      {/* Logo no topo */}
-      <div className="absolute top-14 left-1/2 transform -translate-x-1/2 lg:translate-x-0 lg:top-10 lg:left-10 flex justify-center w-full lg:w-auto z-10">
-        <a href="/">
-          <img
-            src={logoBrazilCashback}
-            alt="Logo Brazil Cashback"
-            className="h-16"
-          />
-        </a>
+      <div className="hidden md:flex w-1/2 justify-center items-center">
+        <img src={Economia} alt="Economia" className="p-20" />
       </div>
 
-      {/* Coluna Esquerda */}
-      <div className="hidden lg:flex flex-col items-center lg:items-start w-full lg:w-1/2 p-10 pt-44 lg:pl-20 lg:p-44">
-        <img
-          src={Economia}
-          alt="Porquinho Financeiro"
-          className="w-full max-w-xs lg:max-w-none mt-4 pl-0 md:pl-8"
-        />
-      </div>
+      <div className="w-full lg:w-1/2 p-16">
+        <div className="max-w-md mx-auto p-6">
+          <h1 className="text-3xl mb-6 text-center">Crie a sua conta</h1>
 
-      {/* Coluna Direita (Formulário) */}
-      <div className="flex flex-col items-center justify-center w-full lg:w-1/2 p-4 lg:p-10">
-        <div className="w-full max-w-md p-6">
-          <h1 className="text-4xl p-6 text-center">Crie a sua conta</h1>
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <input
-              type="text"
-              name="razao_social"
-              value={formData.razao_social}
-              onChange={handleChange}
-              placeholder="Razão Social"
-              className={`w-full p-2 border rounded-lg mb-2 ${
-                errors.razao_social ? "border-red-500" : ""
-              }`}
-            />
-            {errors.razao_social && (
-              <p className="text-red-500 text-sm">{errors.razao_social}</p>
-            )}
+          {step === 1 && (
+            <div>
+              <h2 className="text-2xl mb-4">Escolha o plano</h2>
+              <label>
+                <input
+                  type="radio"
+                  name="plano"
+                  value="basic"
+                  checked={formData.plano === "basic"}
+                  onChange={handleChange}
+                />
+                Plano Lite
+                <ul className="pt-4 pb-4">
+                  <li>- Suporte personalizado</li>
+                  <li>- Suporte personalizado</li>
+                </ul>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="plano"
+                  value="padrao"
+                  checked={formData.plano === "padrao"}
+                  onChange={handleChange}
+                />
+                Plano Padrão
+                <ul className="pt-4 pb-4">
+                  <li>- Suporte personalizado</li>
+                  <li>- Suporte personalizado</li>
+                </ul>
+              </label>
 
-            <input
-              type="text"
-              name="cnpj"
-              value={formData.cnpj}
-              onChange={handleChange}
-              placeholder="CNPJ"
-              className={`w-full p-2 border rounded-lg mb-2 ${
-                errors.cnpj ? "border-red-500" : ""
-              }`}
-            />
-            {errors.cnpj && (
-              <p className="text-red-500 text-sm">{errors.cnpj}</p>
-            )}
+              <label>
+                <input
+                  type="radio"
+                  name="plano"
+                  value="premium"
+                  checked={formData.plano === "premium"}
+                  onChange={handleChange}
+                />
+                Plano BCB Plus
+              </label>
+              {errors.plano && <p className="text-red-500">{errors.plano}</p>}
+              <div className="flex items-center justify-center">
+              <button onClick={nextStep} className="bg-yellow-500 text-white p-2 mt-4 rounded">
+                Avançar
+              </button>
+              </div>
+            </div>
+          )}
 
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="E-mail"
-              className={`w-full p-2 border rounded-lg mb-2 ${
-                errors.email ? "border-red-500" : ""
-              }`}
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email}</p>
-            )}
+          {step === 2 && (
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="razao_social"
+                placeholder="Razão Social"
+                value={formData.razao_social}
+                onChange={handleChange}
+                className={`w-full p-2 m-2 border-2 rounded-lg ${errors.razao_social ? "border-red-500" : ""}`}
+              />
+              {errors.razao_social && <p className="text-red-500">{errors.razao_social}</p>}
 
-            <input
-              type="password"
-              name="senha"
-              value={formData.senha}
-              onChange={handleChange}
-              placeholder="Senha"
-              className={`w-full p-2 border rounded-lg mb-2 ${
-                errors.senha ? "border-red-500" : ""
-              }`}
-            />
-            {errors.senha && (
-              <p className="text-red-500 text-sm">{errors.senha}</p>
-            )}
+              <input
+                type="text"
+                name="cnpj"
+                placeholder="CNPJ"
+                value={formData.cnpj}
+                onChange={handleChange}
+                className={`w-full p-2 m-2 border-2 rounded-lg ${errors.cnpj ? "border-red-500" : ""}`}
+              />
+              {errors.cnpj && <p className="text-red-500">{errors.cnpj}</p>}
 
-            <input
-              type="password"
-              name="confirmar_senha"
-              value={formData.confirmar_senha}
-              onChange={handleChange}
-              placeholder="Confirmar Senha"
-              className={`w-full p-2 border rounded-lg mb-2 ${
-                errors.confirmar_senha ? "border-red-500" : ""
-              }`}
-            />
-            {errors.confirmar_senha && (
-              <p className="text-red-500 text-sm">{errors.confirmar_senha}</p>
-            )}
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full p-2 m-2 border-2 rounded-lg ${errors.email ? "border-red-500" : ""}`}
+              />
+              {errors.email && <p className="text-red-500">{errors.email}</p>}
 
-            <input
-              type="text"
-              name="telefone"
-              value={formData.telefone}
-              onChange={handleChange}
-              placeholder="Telefone"
-              className={`w-full p-2 border rounded-lg mb-2 ${
-                errors.telefone ? "border-red-500" : ""
-              }`}
-            />
-            {errors.telefone && (
-              <p className="text-red-500 text-sm">{errors.telefone}</p>
-            )}
+              <input
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                value={formData.senha}
+                onChange={handleChange}
+                className={`w-full p-2 m-2 border-2 rounded-lg ${errors.senha ? "border-red-500" : ""}`}
+              />
+              {errors.senha && <p className="text-red-500">{errors.senha}</p>}
 
-            <input
-              type="text"
-              name="categoria_empresa"
-              value={formData.categoria_empresa}
-              onChange={handleChange}
-              placeholder="Categoria da Empresa"
-              className={`w-full p-2 border rounded-lg mb-2 ${
-                errors.categoria_empresa ? "border-red-500" : ""
-              }`}
-            />
-            {errors.categoria_empresa && (
-              <p className="text-red-500 text-sm">{errors.categoria_empresa}</p>
-            )}
+              <input
+                type="password"
+                name="confirmar_senha"
+                placeholder="Confirmar Senha"
+                value={formData.confirmar_senha}
+                onChange={handleChange}
+                className={`w-full p-2 m-2 border-2 rounded-lg ${errors.confirmar_senha ? "border-red-500" : ""}`}
+              />
+              {errors.confirmar_senha && <p className="text-red-500">{errors.confirmar_senha}</p>}
 
-            <button
-              type="submit"
-              className="w-full bg-[#ffcc00] text-white p-2 rounded-lg hover:bg-green-600"
-            >
-              Cadastrar Empresa
-            </button>
-          </form>
+              <div className="flex items-center justify-center">
+              <button type="submit" className="bg-yellow-500 text-white p-2 mt-4 rounded">
+                Finalizar Cadastro
+              </button>
+              </div>
+              {errors.global && <p className="text-red-500 text-center mt-4">{errors.global}</p>}
+            </form>
+          )}
+
+          {step === 3 && showSuccess && (
+            <p className="text-green-500 text-center">Cadastro realizado com sucesso!</p>
+          )}
         </div>
       </div>
     </div>

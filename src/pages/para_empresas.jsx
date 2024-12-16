@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ScrollReveal from 'scrollreveal';
 import NavbarAmarela from '../components/empresas/Navbar_amarela';
-import Gestao2 from '../assets/icon-gestao-y.gif';
+import Gestao2 from '../assets/money.png';
 import Cadastre from '../assets/Etapas_empresa/cadastre.svg';
 import Configure from '../assets/Etapas_empresa/configure.svg';
 import Fidelize from '../assets/Etapas_empresa/fidelize.svg';
@@ -70,16 +70,16 @@ function para_empresas() {
           </p>
 
           <div className="flex gap-3 mt-2 p-2">
-            <a href="/testeagora">
+            <a href="/cadastro_empresa">
               <button className="text-black md:text-base bg-[#ffcc00] rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-black hover:border-2 hover:border-black ">Cadastre sua empresa</button>
             </a>
-            <a href="/contato">
+            <a href="/agendar_demonstracao">
               <button className="border-2 border-[#ffcc00] text-[#ffcc00] rounded-lg bg-transparent hover:border-black hover:border-2 py-2 px-2">Agendar demonstração</button>
             </a>
           </div>
         </div>
         <div className="md:w-1/2 w-full flex justify-center md:mt-0 mx-15 reveal-right">
-          <img src={Gestao2} alt="Boneco-mexendo-em-arquivos" className="max-w-96 h-auto mt-10" />
+          <img src={Gestao2} alt="Boneco-mexendo-em-arquivos" className="h-50 pr-20" />
         </div>
       </div>
 
@@ -295,7 +295,6 @@ function para_empresas() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl px-4">
             {/* Depoimento 1 */}
             <div className="bg-white dark:bg-black shadow-lg rounded-lg p-6 border-2 border-[#ffcc00] border-dashed relative min-h-[250px] flex flex-col justify-between">
-              <div className="absolute top-4 -left-4 w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-r-[20px] border-r-gray-400"></div>
               <p className="text-gray-600 dark:text-white mb-4">
                 "Conheci o Brazil Cashback buscando na internet uma maneira de atrair mais leads para o meu modelo de negócios. Fiquei muito contente em encontrar um sistema que automatize e reduza meu trabalho."
               </p>
@@ -314,7 +313,6 @@ function para_empresas() {
 
             {/* Depoimento 2 */}
             <div className="bg-white dark:bg-black shadow-lg rounded-lg p-6 border-2 border-[#ffcc00] border-dashed relative min-h-[250px] flex flex-col justify-between">
-              <div className="absolute top-4 -left-4 w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-r-[20px] border-r-gray-400"></div>
               <p className="text-gray-600 dark:text-white mb-4">
                 "Nossa parceria começou em 2018 quando tivemos a ideia de bonificar nossos clientes e precisavamos de uma solução simples que atendesse as necessidades individuais de cada negócio. Em minha opinião Brazil Cashback é um sucesso!"
               </p>
@@ -333,7 +331,6 @@ function para_empresas() {
 
             {/* Depoimento 3 */}
             <div className=" dark:bg-black bg-white shadow-lg rounded-lg p-6 border-2 border-[#ffcc00] border-dashed relative min-h-[250px] flex flex-col justify-between">
-              <div className="absolute top-4 -left-4 w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-r-[20px] border-r-gray-400"></div>
               <p className="text-gray-600 dark:text-white mb-4">
                 "Em 2024 nós começamos a usar a plataforma do Brazil Cashback e desde então estamos aumentando nossos cadastros, vendas e cuidando da satisfação dos nossos clientes."
               </p>

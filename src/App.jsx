@@ -6,6 +6,7 @@ import EntrarEmpresa from './pages/empresas/Entrar_empresa.jsx';
 import Footer from './components/Footer';
 
 import ParaEmpresas from './pages/para_empresas';
+import AgendarDemonstracao from './pages/empresas/agendar_demonstracao.jsx'
 import Cadastro from './pages/cadastro';
 import CadastroEmpresa from './pages/empresas/cadastro_empresa.jsx';
 import Entrar from './pages/Entrar'; // Página de login
@@ -32,7 +33,7 @@ function App() {
   const location = useLocation(); // Obtem a rota atual
 
   // Lista de rotas onde a Navbar deve ser ocultada
-  const hideNavbarRoutes = ['/inicio', '/entrar', '/cadastro', '/entrar_empresa', '/index_empresa', '/cadastro_empresa']; // Adicione mais rotas conforme necessário
+  const hideNavbarRoutes = ['/inicio', '/para_empresas','/agendar_demonstracao', '/entrar', '/cadastro', '/entrar_empresa', '/index_empresa', '/cadastro_empresa']; // Adicione mais rotas conforme necessário
 
   return (
     <>
@@ -42,6 +43,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/para_empresas" element={<ParaEmpresas />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/agendar_demonstracao" element={<AgendarDemonstracao />} />
         <Route path="/entrar" element={<Entrar />} />
         <Route path="/saiba_mais" element={<TesteAgora />} />
         <Route path="/inicio" element={<Inicio />} />

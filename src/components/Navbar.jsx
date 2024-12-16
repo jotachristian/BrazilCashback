@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import logoBrazilCashback from '../assets/BC-verde.png';
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import logoBrazilCashback from "../assets/BC-verde.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,25 +13,33 @@ const Navbar = () => {
 
   useEffect(() => {
     const updateTheme = () => {
-      document.body.classList.toggle('dark-mode', window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.body.classList.toggle(
+        "dark-mode",
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      );
     };
     updateTheme();
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", updateTheme);
     return () => {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', updateTheme);
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", updateTheme);
     };
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [menuOpen]);
 
-  const showNavbar = location.pathname !== '/entrar' && location.pathname !== '/cadastro';
-  const isEmpresaPage = location.pathname === '/para_empresas';
+  const showNavbar =
+    location.pathname !== "/entrar" && location.pathname !== "/cadastro";
+  const isEmpresaPage = location.pathname === "/para_empresas";
 
   if (!showNavbar) return null;
 
@@ -44,23 +52,31 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-10 md:px-8">
         <div className="md:hidden flex justify-end">
           <div
-            className={`space-y-1 cursor-pointer z-50 ${menuOpen ? 'open' : ''}`}
+            className={`space-y-1 cursor-pointer z-50 ${
+              menuOpen ? "open" : ""
+            }`}
             onClick={toggleMenu}
           >
             <div
-              className={`block h-1 w-7 transition-transform ${menuOpen ? 'rotate-45 translate-y-2' : ''} bg-gray-800 dark:bg-white bg-opacity-75`}
+              className={`block h-1 w-7 transition-transform ${
+                menuOpen ? "rotate-45 translate-y-2" : ""
+              } bg-gray-800 dark:bg-white bg-opacity-75`}
             ></div>
             <div
-              className={`block h-1 w-7 transition-opacity ${menuOpen ? 'opacity-0' : ''} bg-gray-800 dark:bg-white bg-opacity-75`}
+              className={`block h-1 w-7 transition-opacity ${
+                menuOpen ? "opacity-0" : ""
+              } bg-gray-800 dark:bg-white bg-opacity-75`}
             ></div>
             <div
-              className={`block h-1 w-7 transition-transform ${menuOpen ? '-rotate-45 -translate-y-2' : ''} bg-gray-800 dark:bg-white bg-opacity-75`}
+              className={`block h-1 w-7 transition-transform ${
+                menuOpen ? "-rotate-45 -translate-y-2" : ""
+              } bg-gray-800 dark:bg-white bg-opacity-75`}
             ></div>
           </div>
         </div>
 
         <div className="flex-grow flex justify-center md:justify-start">
-          <a href={isEmpresaPage ? '/para_empresas' : '/'} className="flex">
+          <a href={isEmpresaPage ? "/para_empresas" : "/"} className="flex">
             <img
               src={logoBrazilCashback}
               alt="Brazil Cashback"
@@ -70,22 +86,74 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-6">
-          <a href="/" className={`underline-animation text-base px-3 pb-2`}>Para você</a>
-          <a href="/para_empresas" className={`underline-animation text-base px-3 pb-2`}>Para sua Empresa</a>
-          <a href="/cadastro" className={`underline-animation text-base px-3 pb-2`}>Cadastrar-se</a>
-          <a href="/entrar" className={`text-base rounded-md px-4 py-1 transition duration-300`}>Entrar</a>
+          <a
+            href="/"
+            className={`underline-animation text-base px-3 pb-2 hover:text-primary`}
+          >
+            Para você
+          </a>
+          <a
+            href="/para_empresas"
+            className={`underline-animation text-base px-3 pb-2 hover:text-primary`}
+          >
+            Para sua Empresa
+          </a>
+          <a
+            href="/cadastro"
+            className={`underline-animation text-base px-3 pb-2 hover:text-primary`}
+          >
+            Cadastrar-se
+          </a>
+          <a
+            href="/entrar"
+            className={`text-base rounded-md px-3 pb-2 transition duration-300 bg-primary text-black font-bold hover:opacity-40`}
+          >
+            Entrar
+          </a>
         </div>
 
         {menuOpen && (
           <div className="fixed top-0 left-0 w-full h-full flex z-50">
             <div className="w-1/2 h-full flex flex-col pt-5 pl-4 bg-white dark:bg-gray-800">
-              <button onClick={toggleMenu} className="bg-transparent text-left text-lg text-gray-400 mb-2 p-2 border-2">Voltar</button>
-              <a href="/" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Para você</a>
-              <a href="/para_empresas" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Para sua Empresa</a>
-              <a href="/cadastro" className="text-[#008000] text-lg py-4 w-full" onClick={toggleMenu}>Cadastre-se</a>
-              <a href="/entrar" className="text-[#008000] text-lg my-4 w-full" onClick={toggleMenu}>Entrar</a>
+              <button
+                onClick={toggleMenu}
+                className="bg-transparent text-left text-lg text-gray-400 mb-2 p-2 border-2"
+              >
+                Voltar
+              </button>
+              <a
+                href="/"
+                className="text-[#008000] text-lg py-4 w-full"
+                onClick={toggleMenu}
+              >
+                Para você
+              </a>
+              <a
+                href="/para_empresas"
+                className="text-[#008000] text-lg py-4 w-full"
+                onClick={toggleMenu}
+              >
+                Para sua Empresa
+              </a>
+              <a
+                href="/cadastro"
+                className="text-[#008000] text-lg py-4 w-full"
+                onClick={toggleMenu}
+              >
+                Cadastre-se
+              </a>
+              <a
+                href="/entrar"
+                className="text-[#008000] text-lg my-4 w-full"
+                onClick={toggleMenu}
+              >
+                Entrar
+              </a>
             </div>
-            <div className="w-1/2 h-full bg-transparent/40" onClick={toggleMenu}></div>
+            <div
+              className="w-1/2 h-full bg-transparent/40"
+              onClick={toggleMenu}
+            ></div>
           </div>
         )}
       </div>
